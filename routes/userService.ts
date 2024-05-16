@@ -36,10 +36,10 @@ export async function saveAuthorAddress(req: Request, res: Response) {
       `INSERT INTO authors (name VALUES ('${author.name}') RETURNING id `,
     );
     console.log(authorData.rows[0].id);
-    const cursoData = await client.query(
-      `INSERT INTO addresses (street, number, author_id) VALUES ('${author.address.street}', '${author.address.number}', '${authorData.rows[0].id}')`,
-    );
-    await client.query("COMMIT");
+    // const cursoData = await client.query(
+    //   `INSERT INTO addresses (street, number, author_id) VALUES ('${author.address.street}', '${author.address.number}', '${authorData.rows[0].id}')`,
+    // );
+    // await client.query("COMMIT");
   } catch (error) {
     console.error("Erro durante a Busca:", error);
     return res.status(500).json({ error });
