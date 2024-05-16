@@ -12,7 +12,7 @@ const Address = z.object({
 const Author = z.object({
   id: z.number().optional(),
   name: z.string().min(1),
-  address: Address
+ 
 });
 
 // extract the inferred type like this
