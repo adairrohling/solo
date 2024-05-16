@@ -40,6 +40,7 @@ export async function saveAuthorAddress(req: Request, res: Response) {
       `INSERT INTO addresses (street, number, author_id) VALUES ('${author.address.street}', '${author.address.number}', '${authorData.rows[0].id}')`,
     );
     await client.query("COMMIT");
+    res.status(201).json(cursoData.rows[0]);
   } catch (error) {
     console.error("Erro durante a Busca:", error);
     return res.status(500).json({ error });
