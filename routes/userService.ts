@@ -5,7 +5,7 @@ import { Request, Response, Router } from "express";
 import { z } from "zod";
 
 const Address = z.object({
-  number: z.number(),
+  number: z.number().optional(),
   street: z.string().min(1)
 });
 
@@ -20,7 +20,7 @@ type Author = z.infer<typeof Author>;
 
 const Monography = z.object({
   title: z.string(),
-  author: Author,
+  author: Author.optional()
 });
 
 type Monography = z.infer<typeof Monography>;
