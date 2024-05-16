@@ -6,6 +6,7 @@ import {
   getMonographyById,
   allMonographs,
   saveMonography,
+  saveAuthorAddress,
 } from "./routes/userService";  
 const router = express.Router();
 import cors from "cors";
@@ -31,7 +32,7 @@ router.get("/", (req, res) => {
 });
 router.get("/authors", allAuthors);
 router.get("/authors/:id", getAuthorById);
-router.post("/authors", saveAuthor);
+router.post("/authors", saveAuthorAddress);
 
 router.get("/monographs", allMonographs);
 router.get("/monographs/:id", getMonographyById);
