@@ -88,7 +88,9 @@ export const getAuthorById = async (req: Request, res: Response) => {
   const client = await pool.connect();
   try {
     const id = Number(req.params.id);
-    const course = await client.query(`SELECT * FROM authors WHERE id = ${id}`);
+    const course = await client.query(`SELECT a.id, a.name, 
+    json_build_object('id', e.id, 'street', e.street, 'number', e.number) as address FROM addresses e
+    INNER JOIN authors a ON e.author_id = a.id WHERE a.id = ${id}`);
     if (course.rowCount === 0) {
       return res.status(404).json({ message: "Author não encontrado" });
     }
