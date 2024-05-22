@@ -11,6 +11,8 @@ import {
 const router = express.Router();
 import cors from "cors";
 import { allBooks } from "./routes/bookService";
+import { listAuthor2, listMonography2, saveAuthor2, saveMonography2 } from "./routes/mono";
+
 //import cors = require("cors");
 //const usersRouter = require("./routes/users");
 const app = express();
@@ -30,6 +32,12 @@ app.use(router);
 router.get("/", (req, res) => {
   res.send("SI");
 });
+
+router.post("/authors2", saveAuthor2)
+router.get("/authors2", listAuthor2)
+router.post("/monographs2", saveMonography2)
+router.get("/monographs2", listMonography2)
+
 router.get("/authors", allAuthors);
 router.get("/authors/:id", getAuthorById);
 router.post("/authors", saveAuthorAddress);
